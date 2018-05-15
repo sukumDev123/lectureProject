@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+.margin-center{
+    margin:auto;
+}
+.body-card{
+    padding: 10px;
+    box-shadow: 0 0px 1px 1px rgba(0,0,0,0.1);
+    position: relative;
+    top:30px;
+}
+.inputBig {
+    padding: 15px;
+}
+.Skranji{
+    font-family: 'Skranji', cursive;
+    font-size: 32px;
+}
+label , p , a {
+    font-family: 'Julius Sans One', sans-serif;
+}
+.jsO{
+    font-family: 'Julius Sans One', sans-serif;
+}
+.navBar_box{
+    box-shadow: 0 0px 5px 0.1px rgba(0,0,0,0.1);
+}
+.active{
+    font-weight: bold;
+    border-bottom: 2px solid dodgerblue
+}

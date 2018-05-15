@@ -1,0 +1,43 @@
+<div class="continer">
+  <div class="col-12 col-lg-4 col-md-8 margin-center body-card">
+    <h1 class="text-center text-primary Skranji">Sign Up</h1>
+    <form (ngSubmit)="onSignUp()" class='col-12 margin-center p-3'>
+      <div class="md-form p-2">
+        <label for="firstnamr">Firstname : </label>
+        <input type="text" placeholder="FirstName" class="form-control inputBig" required [(ngModel)]="auth.firstname" name="firstname"
+          #firstname="ngModel" [ngModelOptions]="{ updateOn:'change' }">
+        <div [hidden]='firstname.valid || firstname.pristine' class='alert alert-danger'>
+          Firstname is required
+        </div>
+      </div>
+
+      <div class="md-form p-2">
+        <label for="lastname">Lastname</label>
+        <input type="text" placeholder="Lastname"  class="form-control inputBig" required [(ngModel)]="auth.lastname" name="lastname" #lastname="ngModel" [ngModelOptions]="{ updateOn:'change' }" >
+        <div [hidden]='lastname.valid || lastname.pristine' class='alert alert-danger' >
+        Lastname is required
+        </div>
+      </div>
+
+      <div class="md-form p-2">
+        <label for="username">Username : </label>
+        <input type="text" placeholder="username" class="form-control inputBig" required [(ngModel)]="auth.username" name="username"
+          #username="ngModel" [ngModelOptions]="{ updateOn:'change' }">
+        <div [hidden]='username.valid || username.pristine' class='alert alert-danger'>
+          Username is required
+        </div>
+      </div>
+      <div class="md-form p-2">
+        <label for="password">Password</label>
+        <input type="password" placeholder="password" class="form-control inputBig" required [(ngModel)]="auth.password" name="password"
+          #password='ngModel' [ngModelOptions]="{ updateOn:'change' }">
+      </div>
+      <div [hidden]='password.valid || password.pristine' class='alert alert-danger'>
+        password is required
+      </div>
+      <div class="md-from p-2">
+        <button class='btn btn-primary btn-lg btn-block' type='submit'> SignUp </button>
+      </div>
+    </form>
+  </div>
+</div>
