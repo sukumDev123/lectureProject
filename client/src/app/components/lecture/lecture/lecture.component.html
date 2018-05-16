@@ -1,0 +1,30 @@
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="nav_left col-0 col-md-2">
+      <h1 class='Skranji text-primary text-center'>Lecture control</h1>
+      <ul class="nav flex-column">
+        <li class="nav-item p-3">
+          <a class="nav-link " routerLink='/user/lecture/add' routerLinkActive='active'><i class="fas fa-plus-square"></i> Create lecture</a>
+        </li>
+        <li class="nav-item p-3">
+          <a class="nav-link" routerLink='/user/lecture/all' routerLinkActive='active'><i class="fas fa-clipboard-list"></i> List lecture.</a>
+        </li>
+        <li class="nav-item p-3">
+          <a class="nav-link" routerLink='/home' routerLinkActive='active'><i class="fas fa-home"></i> Home Page.</a>
+        </li>
+        <li class="nav-item p-3">
+          <a class="nav-link" routerLink='/user/setting' routerLinkActive='active'><i class="fas fa-cogs"></i> Setting.</a>
+        </li>
+      </ul>
+
+
+    </div>
+    <div class="container">
+      <router-outlet></router-outlet>
+
+    </div>
+  </div>
+
+</div>

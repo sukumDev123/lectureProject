@@ -12,11 +12,11 @@ export class AuthGuard implements CanActivate {
 
   canActivate(): boolean {
     if (this._user.auth()) {
-      this._router.navigate(['/home'])
-      return false
+      
+      return true
     }
     else {
-
+      this._router.navigate(['/auth/login'])
     }
 
   }

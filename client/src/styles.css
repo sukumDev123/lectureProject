@@ -28,3 +28,6 @@ label , p , a {
     font-weight: bold;
     border-bottom: 2px solid dodgerblue
 }
+.lecturePage{
+    margin: 30px;
+}

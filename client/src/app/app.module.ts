@@ -14,6 +14,11 @@ import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { appRoutes } from './route';
 import { AuthInterceprot } from './static/auth-interceprot';
 import { AuthGuard } from './auth/auth.guard';
+import { LectureAllComponent } from './components/lecture/lecture-all/lecture-all.component';
+import { LectureAddComponent } from './components/lecture/lecture-add/lecture-add.component';
+import { LectureComponent } from './components/lecture/lecture/lecture.component';
+
+
 
 
 
@@ -23,7 +28,10 @@ import { AuthGuard } from './auth/auth.guard';
     AppComponent,
     SignInComponent,
     SignUpComponent,
-    HomeComponent
+    HomeComponent,
+    LectureAllComponent,
+    LectureAddComponent,
+    LectureComponent
   ],
   imports: [
     BrowserModule,
