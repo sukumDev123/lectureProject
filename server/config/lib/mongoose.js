@@ -7,7 +7,6 @@ import path from 'path';
 function modelsFunction(){
     config.default.models.forEach(route => {
         require(path.resolve(route))
-        console.log(route)
     })
 }
 
