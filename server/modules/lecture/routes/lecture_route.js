@@ -1,7 +1,7 @@
 
 import express from 'express'
 import { removeLecture, createLecture, stepAddLecture, paramLec, allLecture, removeAddLecture } from '../controllers/lecture_controller'
-import { checkAuth } from '../../checkAuth';
+import { checkAuth } from '../../checkAuth'
 
 
 
