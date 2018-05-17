@@ -30,3 +30,6 @@ label , p , a , button , input{
 .lecturePage{
     margin: 30px;
 }
+.errMsg{
+    width: 100%;padding:10px;color:white;background: rgb(245, 73, 73);font-weight: bold
+}
