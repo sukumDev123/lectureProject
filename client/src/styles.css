@@ -13,9 +13,8 @@
 }
 .Skranji{
     font-family: 'Skranji', cursive;
-    font-size: 32px;
 }
-label , p , a {
+label , p , a , button , input{
     font-family: 'Julius Sans One', sans-serif;
 }
 .jsO{
