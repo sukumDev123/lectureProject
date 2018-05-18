@@ -9,9 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-  auth = {};
-  firstname: String = '';
-  lastname: String = '';
+  auth = { firstname : '' , lastname : '', username : '', password : '' , password2 : '' };
+
   getError: String;
   errSHow: boolean = false;
   constructor(private user: UserSeriveService, private router: Router) { }
@@ -24,12 +23,29 @@ export class SignUpComponent implements OnInit {
     }
   }
   onSignUp() {
+    this.errSHow = false;
 
-    /*this.user.serviceSignUp(this.auth).subscribe(data => localStorage.setItem("id_token", data), err => {
+
+    if(this.auth.username != '' && this.auth.password != '' && this.auth.password2 != '' && this.auth.firstname != '' && this.auth.lastname != ''){
+      if(this.auth.password === this.auth.password2){
+        this.user.serviceSignUp(this.auth).subscribe(data => {
+        this.user.setUserLogin(data);
+    
+          this.router.navigate(['/home'])
+        }, err => {
+          this.errSHow = true;
+          this.getError = err.error.message;
+        })
+      }else{
+        this.errSHow = true;
+        this.getError = "Password != Password again";
+      }
+    }else{
       this.errSHow = true;
-      this.getError = err.error.message;
-    })*/
-    console.log()
+      this.getError = "Please enter all fields.";
+    }
+
+ 
 
 
   }

@@ -1,0 +1,13 @@
+.closed{
+    position: absolute;
+    top:-10px;
+}
+.update_{
+    color:#6cc506;
+    cursor: pointer;
+
+}
+.update_:hover{
+    font-weight: bold;
+    
+}

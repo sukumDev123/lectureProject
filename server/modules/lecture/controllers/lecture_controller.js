@@ -1,4 +1,3 @@
-
 /** create information  */
 
 'use strict'
@@ -7,14 +6,11 @@ const Lecture = mongoose.model('Lecture')
 
 
 function allLecture(req, res) {
+    console.log(typeof (req.user._id))
     if (req.user) {
-        Lecture.findById({ id_user: req.user._id }).then(suc => {
-            return res.json(suc)
-        }).catch(err => {
-            return res.status(400).json({
-                message : 'Require err'
-            })
-        })
+        Lecture.find({
+            id_user: req.user._id
+        }).then(suc => res.json(suc))
     }
 
 }
@@ -22,11 +18,9 @@ function allLecture(req, res) {
 function createLecture(req, res) {
     if (req.user) {
         let lecture_status = true
-        let lecture = new Lecture(req.body);
-        if (!lecture.stepWork || lecture.stepWork.length === 0) {
-            lecture.stepWork.push({ status: false })
-            lecture_status = false
-        }
+        let lecture = new Lecture()
+        lecture.nameProject = req.body.nameL
+        lecture.stepWork = req.body.step
         lecture.id_user = req.user._id
         lecture.save(err => {
             if (err) {
@@ -42,21 +36,28 @@ function createLecture(req, res) {
             }
         })
 
-
     } else {
         return res.status(401).json({
             status: 401,
             message: 'Not allow'
         })
     }
+
 }
+
 function removeAddLecture(req, res) {
+    console.log(req.lecture)
+
     if (req.user && req.lecture) {
-        Lecture.findById({ _id: req.lecture._id }).then(suc => {
+        Lecture.findById({
+            _id: req.lecture._id
+        }).then(suc => {
             let lecture = suc
             let lectureStep = lecture.stepWork
             lectureStep.splice(req.body.stepWork, 1)
-            lecture.set({ stepWork: lectureStep })
+            lecture.set({
+                stepWork: lectureStep
+            })
             lecture.save(err => {
                 if (err) {
                     return res.status(404).json({
@@ -72,13 +73,16 @@ function removeAddLecture(req, res) {
         })
     }
 }
+
 function stepAddLecture(req, res) {
     if (req.user && req.lecture) {
-        Lecture.findById({ _id: req.lecture._id }).then(suc => {
+        Lecture.findById(req.lecture._id).then(suc => {
             let lecture = suc
             let lectureStep = lecture.stepWork
             lectureStep.push(req.body.stepWork)
-            lecture.set({ stepWork: lectureStep })
+            lecture.set({
+                stepWork: lectureStep
+            })
             lecture.save(err => {
                 if (err) {
                     return res.status(404).json({
@@ -96,6 +100,7 @@ function stepAddLecture(req, res) {
 }
 
 function removeLecture(req, res) {
+    console.log(req.lecture)
     if (req.user && req.lecture) {
         let lecture = req.lecture
         lecture.remove(err => {
@@ -113,25 +118,41 @@ function removeLecture(req, res) {
         })
     }
 }
+
 function paramLec(req, res, next, id) {
-    if (req.user) {
-        Lecture.findById({ _id: id }).then(suc => {
-            req.lecture = suc
-            next()
-        }).catch(err => {
-            return res.status(404).json({
-                status: 404,
-                message: 'required err'
-            })
+
+    Lecture.findById(id).then(suc => {
+        req.lecture = suc
+        next()
+    }).catch(err => {
+        return res.status(404).json({
+            status: 404,
+            message: 'required err'
         })
-    } else {
-        return res.status(401).json({
-            status: 401,
-            message: 'Not allow'
-        })
+    })
+
+}
+
+function updateStep(req, res, next) {
+    let step = req.body.idStep;
+    if (req.user && req.lecture) {
+        let lectureN = req.lecture.stepWork
+        lectureN[step].status = true
+        Lecture.update({ _id: req.lecture._id }, { $set: { stepWork : lectureN   } } , function(err,data) {
+            if(err) return res.json({status : 404})
+            res.json(lectureN)
+        });
+
     }
 }
 
 
-
-export { removeLecture, createLecture, stepAddLecture, paramLec, allLecture , removeAddLecture }
+export {
+    removeLecture,
+    createLecture,
+    stepAddLecture,
+    paramLec,
+    allLecture,
+    removeAddLecture,
+    updateStep
+}

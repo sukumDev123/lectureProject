@@ -10,7 +10,7 @@ function signIn(req, res, next) {
             res.status(400).json(
                 {
                     status: 400,
-                    message: err
+                    message: 'Invalid username or password.'
                 }
             )
         } else {

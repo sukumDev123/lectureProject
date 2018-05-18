@@ -1,14 +1,14 @@
 .homeBtn {
     padding: 10px;
     background: rgba(0,0,0,0);
-    border: 5px solid rgb(0, 17, 255);
+    border: 5px solid #007bff;
     border-radius: 5px;
     cursor: pointer;
-    color:rgb(0, 17, 255);
+    color:#007bff;
     transition:  all 1s;
     -webkit-transition:  all 2s;
 }
 .homeBtn:hover {
-    background: rgb(0, 17, 255);
+    background: #007bff;
     color:white
 }

@@ -17,6 +17,8 @@ import { AuthGuard } from './auth/auth.guard';
 import { LectureAllComponent } from './components/lecture/lecture-all/lecture-all.component';
 import { LectureAddComponent } from './components/lecture/lecture-add/lecture-add.component';
 import { LectureComponent } from './components/lecture/lecture/lecture.component';
+import { LectureService } from './services/lecture/lecture.service';
+import { CoreComponent } from './components/core/core/core.component';
 
 
 
@@ -31,7 +33,8 @@ import { LectureComponent } from './components/lecture/lecture/lecture.component
     HomeComponent,
     LectureAllComponent,
     LectureAddComponent,
-    LectureComponent
+    LectureComponent,
+    CoreComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +45,7 @@ import { LectureComponent } from './components/lecture/lecture/lecture.component
   providers: [
     UserSeriveService,
     AuthGuard,
+    LectureService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceprot,

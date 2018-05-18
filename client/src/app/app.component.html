@@ -1,42 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light navBar_box">
-  <div class='container-fluid'>
-    <a class="navbar-brand Skranji text-primary" href="#">Lecture</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item ">
-          <a class="nav-link" routerLink='/home' routerLinkActive="active">Home </a>
-        </li>
 
-      </ul>
-      <div class="navbar-text">
-        <ul class='navbar-nav' *ngIf="!_user.auth()">
-          <li class="nav-item">
-            <a routerLink="/auth/signin" routerLinkActive="active" class="nav-link">Login</a>
-          </li>
-          <li class="nav-item">
-            <a routerLink="/auth/signup" routerLinkActive="active" class="nav-link">Sign Up</a>
-          </li>
-
-        </ul>
-        <div class="navbar-nav" *ngIf='_user.auth()'>
-
-          <li class="nav-item">
-            <a routerLink="/user/lecture/all" routerLinkActive="active" class="nav-link">Lecture</a>
-          </li>
-
-          <li class="nav-item">
-            <a (click)='_user.logout()' class="nav-link">Logout</a>
-          </li>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
 <router-outlet></router-outlet>
 <div class="container-fluid p-3" style='margin-top:50px'>
   <div class="col-12 text-right">

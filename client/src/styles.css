@@ -14,7 +14,7 @@
 .Skranji{
     font-family: 'Skranji', cursive;
 }
-label , p , a , button , input{
+label , p , a , button {
     font-family: 'Julius Sans One', sans-serif;
 }
 .jsO{
@@ -32,4 +32,7 @@ label , p , a , button , input{
 }
 .errMsg{
     width: 100%;padding:10px;color:white;background: rgb(245, 73, 73);font-weight: bold
+}
+.sucMsg{
+    width: 100%;padding:10px;color:white;background: rgb(150, 245, 73);font-weight: bold
 }

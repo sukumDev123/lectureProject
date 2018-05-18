@@ -6,18 +6,24 @@ import { AuthGuard } from "./auth/auth.guard";
 import { LectureAllComponent } from "./components/lecture/lecture-all/lecture-all.component";
 import { LectureComponent } from "./components/lecture/lecture/lecture.component";
 import { LectureAddComponent } from "./components/lecture/lecture-add/lecture-add.component";
+import { CoreComponent } from "./components/core/core/core.component";
 
 
 export const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent },
-
-  {
-    path: 'auth', children: [
-      { path: 'signin', component: SignInComponent },
-      { path: 'signup', component: SignUpComponent },
-
-    ]
-  },
+ 
+  {path : '' , component : CoreComponent , children : [
+    
+      { path: 'home', component: HomeComponent },
+      {
+        path: 'auth', children: [
+          { path: 'signin', component: SignInComponent },
+          { path: 'signup', component: SignUpComponent },
+    
+        ]
+      }
+    
+  ] }
+  ,
   {
     path: 'user', canActivate : [AuthGuard] , children: [
       {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserSeriveService } from '../../../services/user-service/user-serive.service';
-import { User } from '../user_interface';
+
 import { Router } from '@angular/router';
 
 
@@ -10,8 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-  _user: User;
   auth = {};
+  getError: String;
+  errSHow: boolean = false;
   constructor(private user: UserSeriveService, private router: Router) {
   }
 
@@ -26,7 +27,10 @@ export class SignInComponent implements OnInit {
     this.user.serviceSignIn(this.auth).subscribe(data => {
       this.user.setUserLogin(data);
       this.router.navigate(['/home'])
-    }, err => console.log(err.error))
+    }, err => {
+      this.errSHow = true;
+      this.getError = err.error.message;
+    })
   }
 
 }

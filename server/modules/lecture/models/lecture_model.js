@@ -9,12 +9,8 @@ const LectureShcema = new Schema({
         required: 'Please require name project.',
     },
     stepWork: [],
-    time_set: {
-        type: Date,
-        required: "Set Time Project ."
-    },
     id_user: {
-        type: Schema.Types.ObjectId,
+        type: String,
         required: true
     },
     create_at: {

@@ -1,3 +1,18 @@
 <div class="lecturePage">
   <p>lecture all</p>
+
+  <p class='text-right'> จำนวนรายการ : {{ dataLecture.length }} </p>
+  <div class="card" *ngFor='let l of dataLecture ; let i = index'>
+    <div class='p-3'>
+      <p>{{ l.nameProject }}</p>
+      <ul *ngFor='let s of l.stepWork; let i2 = index'>
+        <li> {{s.step}} </li>
+        <li>status : {{ s.status }}   <small class='update_' (click)='statusUpdate(i2,l._id,i)' >&nbsp;&nbsp;  Update</small></li> 
+      </ul>
+      <p> จำนวนวันดำเนินการ : {{dateNum(l.create_at)}} วัน </p>
+      <div class="text-right">
+        <button class='btn closed btn-danger ' (click)='deleteLecture(i , l._id)'><i class='fa fa-times' ></i></button>
+      </div>
+    </div>
+  </div>
 </div>
