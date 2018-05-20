@@ -7,9 +7,10 @@
     "babel-node": "babel-node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --exec npm run babel-node",
-    "build": "babel config -s -d dist/config"
+    "build": "babel index.js -s -d es5"
   },
   "dependencies": {
+    "babel-runtime": "^6.26.0",
     "body-parser": "^1.18.2",
     "chalk": "^2.4.1",
     "connect-mongo": "^2.0.1",
@@ -33,6 +34,8 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.26.0"

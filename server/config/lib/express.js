@@ -38,17 +38,18 @@ function sessionFunction(express_s) {
 function viewEngine(express_s) {
     express_s.set('views', './');
     express_s.set('view engine', 'ejs');
-    express_s.use(express.static('./'));
+    express_s.use(express.static('dist'));
 }
 function routerFunction(express_s) {
     const test = express.Router()
     const { userRoute } = require(path.resolve('./modules/users/routes/user_route'))
     const { lectureRoute } = require(path.resolve('./modules/lecture/routes/lecture_route'))
 
+    
     express_s.use('/api/auth', userRoute())
     express_s.use('/api/lecture', lectureRoute())
     express_s.get('*' , (req,res) => {
-        res.sendFile(path.resolve('./public/index.html') )
+        res.sendFile(path.resolve('./dist/index.html') )
     })
 }
 function middlewareF(express_s) {
