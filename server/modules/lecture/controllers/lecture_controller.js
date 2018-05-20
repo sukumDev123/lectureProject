@@ -10,7 +10,7 @@ function allLecture(req, res) {
     if (req.user) {
         Lecture.find({
             id_user: req.user._id
-        }).then(suc => res.json(suc))
+        }).sort('-create_at').then(suc => res.json(suc))
     }
 
 }
@@ -74,28 +74,15 @@ function removeAddLecture(req, res) {
     }
 }
 
-function stepAddLecture(req, res) {
+function updateStep(req, res) {
     if (req.user && req.lecture) {
-        Lecture.findById(req.lecture._id).then(suc => {
-            let lecture = suc
-            let lectureStep = lecture.stepWork
-            lectureStep.push(req.body.stepWork)
-            lecture.set({
-                stepWork: lectureStep
-            })
-            lecture.save(err => {
-                if (err) {
-                    return res.status(404).json({
-                        message: "Add step not success"
-                    })
-                } else {
-                    return res.json({
-                        message: "Add step success",
-                        lecture: lecture
-                    })
-                }
-            })
-        })
+        let lectureN = req.body;
+ 
+        Lecture.update({ _id: req.lecture._id }, { $set: { stepWork : lectureN   } } , function(err,data) {
+            if(err) return res.json({status : 404})
+            res.json(lectureN)
+        });
+
     }
 }
 
@@ -133,7 +120,7 @@ function paramLec(req, res, next, id) {
 
 }
 
-function updateStep(req, res, next) {
+function updateStepStatus(req, res, next) {
     let step = req.body.idStep;
     if (req.user && req.lecture) {
         let lectureN = req.lecture.stepWork
@@ -150,9 +137,9 @@ function updateStep(req, res, next) {
 export {
     removeLecture,
     createLecture,
-    stepAddLecture,
+    updateStep,
     paramLec,
     allLecture,
     removeAddLecture,
-    updateStep
+    updateStepStatus
 }

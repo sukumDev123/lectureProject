@@ -24,23 +24,22 @@ export class LectureAddComponent implements OnInit {
       this._lecture.createLecture(this.lecture).subscribe( (suc:any) => {
         this.msg = suc.message;
         this.megClass = 'sucMsg';
-        this.lecture.nameL = ''
-        this.lecture.step = []
-        
+        this.lecture.nameL = '';
+        this.lecture.step = [];
+        this.stepList = [];
       } , err => {
         this.msg = err.error.message;
-        
         this.megClass = 'errMsg';
-        
-        console.log(err)
       })
     }
-   console.log(this.lecture)
   }
   addStep(){
     if(this.step != ''){
       this.stepList.push({ step : this.step , status : false})
     }
     this.step = '';
+  }
+  removeStep(index) { 
+    this.stepList.splice(index,1)
   }
 }

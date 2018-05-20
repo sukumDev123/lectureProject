@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-  auth = {};
+  auth = { username : '' , password : ''};
   getError: String;
   errSHow: boolean = false;
   constructor(private user: UserSeriveService, private router: Router) {

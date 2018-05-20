@@ -11,3 +11,20 @@
     font-weight: bold;
     
 }
+.homeBtn {
+    padding: 10px;
+    background: rgba(0,0,0,0);
+    border: 5px solid #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+    color:#007bff;
+    transition:  all 1s;
+    -webkit-transition:  all 2s;
+}
+.homeBtn:hover {
+    background: #007bff;
+    color:white
+}
+.procedd {
+    background: #e5ff00
+}

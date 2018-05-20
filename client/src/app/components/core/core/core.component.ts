@@ -8,7 +8,7 @@ import { UserSeriveService } from '../../../services/user-service/user-serive.se
 })
 export class CoreComponent implements OnInit {
 
-  constructor(private _userservice : UserSeriveService) { }
+  constructor(public _userservice : UserSeriveService) { }
 
   ngOnInit() {
   }

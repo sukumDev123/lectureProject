@@ -1,6 +1,6 @@
-<div class="lecturePage">
-  <div class="row margin-center">
-    <div class="col-12 col-md-6 lectureAdd">
+<div class="lecturePage p-3">
+  <div class="row margin-center ">
+    <div class="col-12 col-md-6 card p-3">
       <h3 class='Skranji text-primary text-center p-3'>Creating Project.</h3>
       <form>
         <div class="md-form">
@@ -19,6 +19,7 @@
               <button class="btn btn-outline-secondary" (click)='addStep()' type="button">save</button>
             </div>
           </div>
+          <small> Number of string : {{ step ? step.length : 0 }} </small>
 
         </div>
 
@@ -34,8 +35,9 @@
     </div>
     <div class="col-12 col-md-6 p-2 ">
       <h3 class='Skranji text-primary text-center p-3'>List Step Project.</h3>
-      <ul *ngFor="let list of stepList">
-        <li>{{list.step}}</li>
+      <p class='text-right' > Number of steps :  {{ stepList.length }}  </p>
+      <ul class="navbar-nav p-3 card" style="overflow: auto; height: 200px  " >
+        <li class='nav-item p-2' style='border-bottom: 3px solid dodgerblue ; font-weight: bold ' *ngFor="let list of stepList ; let i = index" > {{ i+1 }} . {{list.step}}   <p class="text-right" style="float: right; color:red"   > <i class="fas fa-times" (click)='removeStep(i)' ></i>    </p> </li>
       </ul>
     </div>
   </div>

@@ -47,6 +47,9 @@ function routerFunction(express_s) {
 
     express_s.use('/api/auth', userRoute())
     express_s.use('/api/lecture', lectureRoute())
+    express_s.get('*' , (req,res) => {
+        res.sendFile(path.resolve('./public/index.html') )
+    })
 }
 function middlewareF(express_s) {
     express_s.use(cookieParser())

@@ -19,6 +19,7 @@ import { LectureAddComponent } from './components/lecture/lecture-add/lecture-ad
 import { LectureComponent } from './components/lecture/lecture/lecture.component';
 import { LectureService } from './services/lecture/lecture.service';
 import { CoreComponent } from './components/core/core/core.component';
+import { UserSettingComponent } from './components/setting/user-setting/user-setting.component';
 
 
 
@@ -34,7 +35,8 @@ import { CoreComponent } from './components/core/core/core.component';
     LectureAllComponent,
     LectureAddComponent,
     LectureComponent,
-    CoreComponent
+    CoreComponent,
+    UserSettingComponent
   ],
   imports: [
     BrowserModule,

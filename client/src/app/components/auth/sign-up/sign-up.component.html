@@ -37,7 +37,7 @@
         <input type="password" placeholder="password again." class="form-control inputBig" required [(ngModel)]="auth.password2" name="password2"
           #password2='ngModel' [ngModelOptions]="{ updateOn:'change' }">
       </div>
-      <div [hidden]='password.valid || password.pristine' class='alert alert-danger'>
+      <div [hidden]='password2.valid || password2.pristine' class='alert alert-danger'>
         password is required
       </div>
       <div class="md-from p-2">

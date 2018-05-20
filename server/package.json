@@ -7,7 +7,7 @@
     "babel-node": "babel-node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --exec npm run babel-node",
-    "build": "mkdir dist && babel config -s -d dist"
+    "build": "babel config -s -d dist/config"
   },
   "dependencies": {
     "body-parser": "^1.18.2",

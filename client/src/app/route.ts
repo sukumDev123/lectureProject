@@ -7,11 +7,12 @@ import { LectureAllComponent } from "./components/lecture/lecture-all/lecture-al
 import { LectureComponent } from "./components/lecture/lecture/lecture.component";
 import { LectureAddComponent } from "./components/lecture/lecture-add/lecture-add.component";
 import { CoreComponent } from "./components/core/core/core.component";
+import { UserSettingComponent } from "./components/setting/user-setting/user-setting.component";
 
 
 export const appRoutes: Routes = [
  
-  {path : '' , component : CoreComponent , children : [
+  {path : 'core' , component : CoreComponent , children : [
     
       { path: 'home', component: HomeComponent },
       {
@@ -29,14 +30,15 @@ export const appRoutes: Routes = [
       {
         path: 'lecture', component: LectureComponent, children: [
           { path: 'all', component: LectureAllComponent },
-          { path: 'add', component: LectureAddComponent }
-
+          { path: 'add', component: LectureAddComponent },
+          {path : 'setting' , component : UserSettingComponent }
         ]
-      }
+      },
+     
     ]
   },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', redirectTo: '/home', pathMatch: 'full' }
+  { path: '', redirectTo: '/core/home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/core/home', pathMatch: 'full' }
 
 
 ]

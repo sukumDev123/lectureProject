@@ -16,16 +16,16 @@ export class LectureService {
 
   }
   stepAddLecture(id, lecture: object): Observable<object> {
-    return this._http.put<object>(`${this.host}/api/lecture/stempAdd/${id}`, lecture)
+    return this._http.put<object>(`${this.host}/api/lecture/updateStep/${id}`, lecture)
   }
   removeAddLecture(id, lecture: object): Observable<object> {
-    return this._http.delete<object>(`${this.host}/api/lecture/stempAdd/${id}`, lecture)
+    return this._http.delete<object>(`${this.host}/api/lecture/updateStep/${id}`, lecture)
   }
   removeLecture(id): Observable<object> {
     return this._http.delete<object>(`${this.host}/api/lecture/remove/${id}` )
   }
   updateStatus(  id , id_user ): Observable<any> {
-    return this._http.put<any>(this.host + '/api/lecture/updateStep/'+id_user , { idStep: id } );
+    return this._http.put<any>(this.host + '/api/lecture/updateStepStatus/'+id_user , { idStep: id } );
   }
 
 }
