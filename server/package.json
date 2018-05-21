@@ -6,7 +6,7 @@
   "scripts": {
     "babel-node": "babel-node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --exec npm run babel-node",
+    "start": "nodemon server.js",
     "build": "babel index.js -s -d es5"
   },
   "dependencies": {

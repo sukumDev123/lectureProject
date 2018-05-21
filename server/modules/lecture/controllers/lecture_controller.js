@@ -6,7 +6,6 @@ const Lecture = mongoose.model('Lecture')
 
 
 function allLecture(req, res) {
-    console.log(typeof (req.user._id))
     if (req.user) {
         Lecture.find({
             id_user: req.user._id
@@ -46,7 +45,6 @@ function createLecture(req, res) {
 }
 
 function removeAddLecture(req, res) {
-    console.log(req.lecture)
 
     if (req.user && req.lecture) {
         Lecture.findById({
@@ -87,7 +85,7 @@ function updateStep(req, res) {
 }
 
 function removeLecture(req, res) {
-    console.log(req.lecture)
+
     if (req.user && req.lecture) {
         let lecture = req.lecture
         lecture.remove(err => {

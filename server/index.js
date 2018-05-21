@@ -1,9 +1,6 @@
 'use stirct';
 import http from 'http';
 import { chalkF } from './config/chalk'
-
-
-
 import https from 'https';
 import { app } from './config/lib/express';
 import config from './config/config';
