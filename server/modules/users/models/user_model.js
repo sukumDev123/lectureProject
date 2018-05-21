@@ -43,6 +43,10 @@ const userSchema = new Schema({
     create_at: {
         type: Date,
         default: Date.now
+    },
+    roles : {
+        type:String ,
+        default : 'user'
     }
 
 })

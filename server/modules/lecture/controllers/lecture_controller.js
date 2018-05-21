@@ -6,6 +6,7 @@ const Lecture = mongoose.model('Lecture')
 
 
 function allLecture(req, res) {
+    console.log(req.user)
     if (req.user) {
         Lecture.find({
             id_user: req.user._id

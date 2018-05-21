@@ -5,7 +5,7 @@ import localHost from '../../../app/static/http';
 import { HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, retry } from 'rxjs/operators';
 import { Router } from '@angular/router';
-
+import 'rxjs/add/operator/map';
 @Injectable()
 export class UserSeriveService {
   private host = localHost.host;
@@ -26,9 +26,13 @@ export class UserSeriveService {
   }
 
   userReq() {
-    return this.http.get(`${this.host}/api/auth/usernow`, { withCredentials: true });
-
+    return this.http.get(`${this.host}/api/auth/user/data`, { withCredentials: true });
   }
+  editUser(data){
+    return this.http.put(this.host + '/api/auth/edit/info' , data).map((res : any) => console.log(res.json()) )
+  }
+
+
   setUserLogin(user): void {
     localStorage.setItem('id_token', user.id_token);
   }

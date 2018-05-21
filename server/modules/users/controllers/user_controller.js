@@ -77,13 +77,29 @@ function signOut(req, res) {
     res.redirect('/');
 }
 
-function userNow(req, res, next) {
-    if (req.user) {
-        return res.json(req.user)
-    } else {
-        return res.status(401).json({ message: 'Unathenorized Request' })
-
+function userIs (req,res){
+    if(req.user){
+        return res.json(req.user);
     }
 }
 
-export { signIn, signUp, signOut, userNow };
+function editInfo(){
+    if(req.user){
+        let user = req.user;
+        user.firstname = req.body.firstname;
+        user.lastname = req.body.lastname;
+        user.save(err => {
+            if(err) {
+                return res.status(404).json({
+                    message : " You can't update your information. please try again "
+                })
+            }else{
+                return res.json({
+                    message : 'Update your information done.',
+                    user : user
+                })
+            }
+        })
+    }
+}
+export { signIn, signUp, signOut , editInfo , userIs};
