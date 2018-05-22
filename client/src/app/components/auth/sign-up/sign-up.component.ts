@@ -17,7 +17,7 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit() {
     if (this.user.auth()) {
-      this.router.navigate(['/home'])
+      this.router.navigate(['/core/home'])
     } else {
       console.log("you are't login ")
     }
@@ -29,9 +29,9 @@ export class SignUpComponent implements OnInit {
     if(this.auth.username != '' && this.auth.password != '' && this.auth.password2 != '' && this.auth.firstname != '' && this.auth.lastname != ''){
       if(this.auth.password === this.auth.password2){
         this.user.serviceSignUp(this.auth).subscribe(data => {
-        this.user.setUserLogin(data);
+          this.user.setUserLogin(data);
     
-          this.router.navigate(['/home'])
+          this.router.navigate(['/core/home'])
         }, err => {
           this.errSHow = true;
           this.getError = err.error.message;

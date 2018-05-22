@@ -29,7 +29,7 @@ export class UserSeriveService {
     return this.http.get(`${this.host}/api/auth/user/data`, { withCredentials: true });
   }
   editUser(data){
-    return this.http.put(this.host + '/api/auth/edit/info' , data).map((res : any) => console.log(res.json()) )
+    return this.http.put(this.host + '/api/auth/edit/info' , data)
   }
 
 

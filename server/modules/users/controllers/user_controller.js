@@ -2,6 +2,8 @@
 import passport from 'passport';
 import jwt from 'jsonwebtoken'
 import config from '../../../config/config';
+const _ = require('lodash');
+var whitelistedFields = ['firstname', 'lastname'];
 const User = require('mongoose').model('User')
 
 function signIn(req, res, next) {
@@ -25,7 +27,7 @@ function signIn(req, res, next) {
                     })
                 } else {
 
-                    const token = await jwt.sign(user.toObject(), config.env.secret);
+                    const token = await jwt.sign(user.toObject(), config.env.secret, { expiresIn: config.env.timeSession });
                     return res.json({ id_token: 'Bearer ' + token });
 
                 }
@@ -56,7 +58,7 @@ function signUp(req, res) {
                             message: "Login not success"
                         })
                     } else {
-                        const token = await jwt.sign(user.toObject(), config.env.secret);
+                        const token = await jwt.sign(user.toObject(), config.env.secret, { expiresIn: config.env.timeSession });
                         return res.json({ id_token: 'Bearer ' + token });
                     }
                 })
@@ -77,29 +79,56 @@ function signOut(req, res) {
     res.redirect('/');
 }
 
-function userIs (req,res){
-    if(req.user){
-        return res.json(req.user);
-    }
-}
-
-function editInfo(){
-    if(req.user){
+function userIs(req, res) {
+    if (req.user) {
         let user = req.user;
-        user.firstname = req.body.firstname;
-        user.lastname = req.body.lastname;
-        user.save(err => {
-            if(err) {
-                return res.status(404).json({
-                    message : " You can't update your information. please try again "
-                })
-            }else{
-                return res.json({
-                    message : 'Update your information done.',
-                    user : user
-                })
-            }
+        user.password = undefined;
+        user.salt = undefined;
+        return res.json(user);
+    } else {
+        return res.status(401).json({
+            status: 401,
+            message: req.errors
         })
     }
+
 }
-export { signIn, signUp, signOut , editInfo , userIs};
+
+function editInfo(req, res) {
+
+
+
+    var user = req.user;
+
+    if (user) {
+        // Update whitelisted fields only
+        user = _.extend(user, _.pick(req.body, whitelistedFields));
+        user.save(function (err) {
+            if (err) {
+                return res.status(422).send({
+                    message: errorHandler.getErrorMessage(err)
+                });
+            } else {
+                req.login(user, async function (err) {
+                    user.password = undefined;
+                    user.salt = undefined;
+                    if (err) {
+                        res.status(400).send(err);
+                    } else {
+                        const token = await jwt.sign(user.toObject(), config.env.secret);
+                        return res.json({ id_token: 'Bearer ' + token });
+                    }
+                });
+            }
+        });
+    } else {
+        res.status(401).send({
+            message: 'User is not signed in'
+        });
+    }
+
+
+
+
+}
+export { signIn, signUp, signOut, editInfo, userIs };

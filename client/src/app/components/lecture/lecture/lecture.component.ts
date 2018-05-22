@@ -10,6 +10,7 @@ export class LectureComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
   showNav_SF(){
     if(this.showNav_S === false){

@@ -13,7 +13,14 @@
             
             <input type="text" [(ngModel)]='user.lastname' name='lastname' class="form-control">
           </div>
-      
+          <div class="md-form p-2">
+            <button (click)='updateName()' class="btn btn-primary btn-block">
+              Update
+            </button>
+          </div>
         </form>
+        <div class="md-form p-2" *ngIf='sucMsg != "" ' >
+          <p class='sucMsg' >{{ sucMsg }}</p>
+        </div>
   </div>
 </div>

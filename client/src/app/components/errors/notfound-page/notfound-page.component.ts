@@ -7,7 +7,7 @@ import { ErrorsPageService } from '../../../services/errors-page/errors-page.ser
   styleUrls: ['./notfound-page.component.css']
 })
 export class NotfoundPageComponent implements OnInit {
-  errorSMsg : object = {statusText : 'not found page ' , message : 'Can not find page you want or because not page '};
+  errorSMsg : any = {statusText : 'not found page ' , message : 'Can not find page you want or because not page '};
 
   constructor(private _error : ErrorsPageService) { }
 

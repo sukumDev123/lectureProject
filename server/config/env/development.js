@@ -3,5 +3,6 @@ export default {
     secret : 'secret_lecture_key',
     port : 3000,
     ports : 3001,
-    debug : true
+    debug : true,
+    timeSession : 30
 }

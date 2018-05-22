@@ -7,12 +7,12 @@ import { ErrorsPageService } from '../../../services/errors-page/errors-page.ser
   styleUrls: ['./server-err.component.css']
 })
 export class ServerErrComponent implements OnInit {
-  errorSMsg : object = {statusText : '' , message : ''};
+  errorSMsg : any = {statusText : '' , message : ''};
   constructor(private _errors : ErrorsPageService) { }
 
   ngOnInit() {
     this.errorSMsg = this._errors.errMsg
-    console.log(this.errorSMsg)
+    
   }
 
 }

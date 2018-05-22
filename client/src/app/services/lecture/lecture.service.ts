@@ -27,5 +27,6 @@ export class LectureService {
   updateStatus(  id , id_user ): Observable<any> {
     return this._http.put<any>(this.host + '/api/lecture/updateStepStatus/'+id_user , { idStep: id } );
   }
+  
 
 }
