@@ -8,6 +8,8 @@ import { LectureComponent } from "./components/lecture/lecture/lecture.component
 import { LectureAddComponent } from "./components/lecture/lecture-add/lecture-add.component";
 import { CoreComponent } from "./components/core/core/core.component";
 import { UserSettingComponent } from "./components/setting/user-setting/user-setting.component";
+import { ServerErrComponent } from "./components/errors/server-err/server-err.component";
+import { NotfoundPageComponent } from "./components/errors/notfound-page/notfound-page.component";
 
 
 export const appRoutes: Routes = [
@@ -37,8 +39,10 @@ export const appRoutes: Routes = [
      
     ]
   },
+  { path : 'server/err' , component : ServerErrComponent },
+  { path : 'not/found' , component : NotfoundPageComponent },  
+    
   { path: '', redirectTo: '/core/home', pathMatch: 'full' },
-  { path: '**', redirectTo: '/core/home', pathMatch: 'full' }
-
+  { path: '**', redirectTo: '/not/found', pathMatch: 'full' },
 
 ]

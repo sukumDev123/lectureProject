@@ -6,12 +6,12 @@
       <form>
           <div class="md-form">
             <label for="firstname"> First name :  </label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" [(ngModel)]='user.firstname' name='firstname' >
           </div>
           <div class="md-form">
               <label for="lasntname"> Last name :  </label>
             
-            <input type="text" class="form-control">
+            <input type="text" [(ngModel)]='user.lastname' name='lastname' class="form-control">
           </div>
       
         </form>

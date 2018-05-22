@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LectureService } from '../../../services/lecture/lecture.service';
 import { Router } from '@angular/router';
+import { ErrorsPageService } from '../../../services/errors-page/errors-page.service';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class LectureAllComponent implements OnInit {
   classNow : string;
   step : string;
   stepIndex : number;
-  constructor(private _lecture : LectureService , private _router : Router) { }
+  constructor(private _lecture : LectureService , private _router : Router , private _errPage : ErrorsPageService) { }
 
   check_min_7(date) {
     let date_start = new Date(date).toString();
@@ -46,7 +47,7 @@ export class LectureAllComponent implements OnInit {
         
       }
     },err => {
-      console.log(err)
+      this._errPage.pageOn(err);
     })
   }
 

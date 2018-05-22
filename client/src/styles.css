@@ -36,3 +36,7 @@ label , p , a , button {
 .sucMsg{
     width: 100%;padding:10px;color:white;background: rgb(150, 245, 73);font-weight: bold
 }
+.errorPage{
+    position: relative;
+    top:150px;
+}

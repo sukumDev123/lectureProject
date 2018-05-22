@@ -7,14 +7,14 @@ import { UserSeriveService } from '../../../services/user-service/user-serive.se
   styleUrls: ['./user-setting.component.css']
 })
 export class UserSettingComponent implements OnInit {
-  userInfor : any = { firstname : '' , lastname : '' };
+  user : any = { firstname : '' , lastname : '' };
   constructor( private _user:UserSeriveService) { }
 
   ngOnInit() {
   
     this._user.userReq().subscribe(suc => {
-      //this.userInfor = suc;
-      //console.log(suc)
+      this.user = suc;
+     
     })
   }
 

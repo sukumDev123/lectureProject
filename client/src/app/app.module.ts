@@ -20,6 +20,9 @@ import { LectureComponent } from './components/lecture/lecture/lecture.component
 import { LectureService } from './services/lecture/lecture.service';
 import { CoreComponent } from './components/core/core/core.component';
 import { UserSettingComponent } from './components/setting/user-setting/user-setting.component';
+import { ServerErrComponent } from './components/errors/server-err/server-err.component';
+import { NotfoundPageComponent } from './components/errors/notfound-page/notfound-page.component';
+import { ErrorsPageService } from './services/errors-page/errors-page.service';
 
 
 
@@ -36,7 +39,9 @@ import { UserSettingComponent } from './components/setting/user-setting/user-set
     LectureAddComponent,
     LectureComponent,
     CoreComponent,
-    UserSettingComponent
+    UserSettingComponent,
+    ServerErrComponent,
+    NotfoundPageComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +53,7 @@ import { UserSettingComponent } from './components/setting/user-setting/user-set
     UserSeriveService,
     AuthGuard,
     LectureService,
+    ErrorsPageService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceprot,

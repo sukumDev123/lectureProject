@@ -45,7 +45,7 @@ export class UserSeriveService {
   logout(): void {
     // remove user from local storage to log user out
     localStorage.removeItem('id_token');
-    this.router.navigate(['/auth/signin']);
+    this.router.navigate(['/core/auth/signin']);
 
   }
 }
