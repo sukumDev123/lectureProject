@@ -18,8 +18,10 @@ export class UserSettingComponent implements OnInit {
       this.user = suc;
 
     }, err => {
+  
       if (err.status === 401) {
         localStorage.removeItem('id_token');
+        window.alert("Session expired !");
         this._router.navigate(['/core/auth/signin'])
 
       }

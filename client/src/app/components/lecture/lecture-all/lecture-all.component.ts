@@ -48,6 +48,12 @@ export class LectureAllComponent implements OnInit {
       }
     },err => {
       this._errPage.pageOn(err);
+      if (err.status === 401) {
+        localStorage.removeItem('id_token');
+        window.alert("Session expired !");
+        this._router.navigate(['/core/auth/signin'])
+
+      }
     })
   }
 

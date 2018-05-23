@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LectureService } from '../../../services/lecture/lecture.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lecture-add',
@@ -9,18 +10,19 @@ import { LectureService } from '../../../services/lecture/lecture.service';
 export class LectureAddComponent implements OnInit {
   lecture  = { nameL : '' , step : [] };
   stepList = [];
+
   msg : string ;
   show : boolean;
-  step : string ;
+  stepInput: string ; 
   megClass : string ;
-  constructor(private _lecture : LectureService) { }
+  constructor(private _lecture : LectureService , private _router : Router ){ }
 
    
   ngOnInit() {
   }
   create(){
     this.lecture.step = this.stepList;
-    if(this.step == ''){
+    if(this.stepInput == ''){
       this._lecture.createLecture(this.lecture).subscribe( (suc:any) => {
         this.msg = suc.message;
         this.megClass = 'sucMsg';
@@ -30,14 +32,22 @@ export class LectureAddComponent implements OnInit {
       } , err => {
         this.msg = err.error.message;
         this.megClass = 'errMsg';
+        if (err.status === 401) {
+          localStorage.removeItem('id_token');
+          window.alert("Session expired !");
+          this._router.navigate(['/core/auth/signin'])
+  
+        }
       })
     }
   }
   addStep(){
-    if(this.step != ''){
-      this.stepList.push({ step : this.step , status : false})
+
+    if(this.stepInput != undefined && this.stepInput != ''){
+      this.stepList.push({ step : this.stepInput , status : false})
+      this.stepInput = '';
     }
-    this.step = '';
+   
   }
   removeStep(index) { 
     this.stepList.splice(index,1)

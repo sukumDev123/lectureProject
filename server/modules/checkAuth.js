@@ -19,7 +19,7 @@ export async function checkAuth(req, res, next) {
             })
         } catch (error) {
             req.errors = error;
-            return res.redirect('/core/home')
+            next();
         }
 
     } else {

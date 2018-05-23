@@ -1,8 +1,8 @@
 export default {
-    db : 'mongoDB://localhost/lecture',
+    db : 'mongoDB://192.168.99.100/lecture',
     secret : 'secret_lecture_key',
     port : 3000,
     ports : 3001,
     debug : true,
-    timeSession : 30
+    timeSession : 60 * 60
 }
