@@ -12,6 +12,8 @@ services:
     build: ./server
     volumes:
       - ./server:/opt/lecture
+    environment:
+      - NODE_ENV=production
     ports:
       - "3000"
     links:
