@@ -53,15 +53,11 @@ const userSchema = new Schema({
 
 userSchema.pre('save', function (next) {
     if (this.password && this.isModified('password') ) {
-        let owasp_test = this.owaspFunction(this.password)
-        if (owasp_test.status) {
+       
             this.salt = crypto.randomBytes(256).toString('base64');
-            this.password = this.hashPassword(this.password)
-            next();
+            this.password = this.hashPassword(this.password);
 
-        } else {
-            next(owasp_test.err.errors[0])
-        }
+       
     }
     next();
 })
