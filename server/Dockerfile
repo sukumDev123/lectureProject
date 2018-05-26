@@ -1,33 +1,22 @@
 FROM ubuntu:16.04
 
-EXPOSE 80 443 3000
+MAINTAINER LectureProject
 
-ENV NODE_ENV development
-
-RUN apt-get update -q  \
- && apt-get install -yqq \
- curl \
- git \
- ssh \
- gcc \
- make \
- build-essential \
- libkrb5-dev \
- sudo \
- apt-utils \
- nginx \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-
+RUN apt-get update \ 
+    && apt-get install -yqq git curl sudo \
+    && apt-get clean 
 RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-RUN apt-get install -y nodejs
-
-RUN npm i -g nodemon pm2 yarn 
-
+RUN sudo apt-get install -y nodejs
+RUN npm install -g nodemon yarn &&  \ 
+    mkdir /opt/lecture
 
 WORKDIR /opt/lecture
-COPY . /opt/lecture
+
+COPY package.json /opt/lecture
 RUN yarn
 
-CMD npm start
+COPY . /opt/lecture
+
+EXPOSE 3000
+
+CMD [ "npm" , "start" ]
