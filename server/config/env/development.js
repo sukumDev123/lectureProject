@@ -4,5 +4,5 @@ export default {
     port : 3000,
     ports : 3001,
     debug : true,
-    timeSession : 30
+    timeSession : 60 * 60
 }
