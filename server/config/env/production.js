@@ -1,7 +1,7 @@
 export default {
-    db : 'mongoDB://172.19.0.2/lecture',
+    db : `mongodb://lucture:${process.env.MONGOPASS}@ds125016.mlab.com:25016/lecture`,
     secret : 'secret_lecture_key_production',
-    port : 3000,
-    ports : 3001,
+    port : 5000,
+    ports : 5001,
     debug : false
 }

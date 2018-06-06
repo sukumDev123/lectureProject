@@ -3,10 +3,12 @@ version: '3'
 services:
   web: 
     build: ./nginx
+    volumes:
+      - ./nginx:/etc/nginx/
     links:
       - lecture:lecture
     ports:
-      - "80:80"
+      - "8080:80"
   
   lecture:
     build: ./server
@@ -14,12 +16,7 @@ services:
       - ./server:/opt/lecture
     environment:
       - NODE_ENV=production
-    ports:
-      - "3000"
-    links:
-      - mongo
 
-  mongo:
-    image: mongo
-    ports: 
-      - 27017:27017
+    ports:
+      - "5000"
+   

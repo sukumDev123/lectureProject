@@ -2,6 +2,8 @@ FROM ubuntu:16.04
 
 MAINTAINER LectureProject
 
+
+ENV NODE_ENV=production
 RUN apt-get update \ 
     && apt-get install -yqq git curl sudo \
     && apt-get clean 
@@ -15,8 +17,8 @@ WORKDIR /opt/lecture
 COPY package.json /opt/lecture
 RUN yarn
 
+
+EXPOSE 5000
 COPY . /opt/lecture
 
-EXPOSE 3000
-
-CMD [ "npm" , "start" ]
+CMD npm start
